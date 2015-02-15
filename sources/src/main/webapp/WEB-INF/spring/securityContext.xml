@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+
+	<http pattern="/javax.faces.resource/**" security="none" />
+
+
+	<http use-expressions="true" authentication-manager-ref="authenticationManager" path-type="ant" >
+	<form-login login-page="/login" default-target-url="/"/>
+		<!-- <custom-filter ref="authenticationFilter" position="FORM_LOGIN_FILTER" /> -->
+
+
+		<!-- INTERCEPT URL's -->
+
+		<intercept-url pattern="/login/**" access="permitAll" />
+		<intercept-url pattern="/logout/**" access="permitAll" />
+		<intercept-url pattern="/error/**" access="permitAll" />
+		<intercept-url pattern="/**" access="isFullyAuthenticated()" />
+
+
+		<intercept-url pattern="/**" access="hasRole('ADMIN')" />
+
+
+		<!-- INTERCEPT URLS -->
+		<logout logout-url="/logout_ac" logout-success-url="/login?status=logged_out" />
+	</http>
+
+
+	<beans:bean id="authenticationManager" class="com.jeefix.adminbutton.services.SecurityManager" />
+
+
+</beans:beans>

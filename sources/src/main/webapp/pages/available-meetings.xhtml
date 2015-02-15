@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/default/main.xhtml">
+	<ui:define name="content">
+		<h1 class="page-header ">
+			<i class="fa fa-list"></i> Available meetings
+		</h1>
+		<p:dataTable var="meeting" value="#{availableMeetingsController.meetingList}"
+			paginator="true" paginatorPosition="bottom">
+			<p:column headerText="Name">
+				<h:outputText value="#{meeting.name}" />
+			</p:column>
+			<p:column headerText="Meeting Id">
+				<h:outputText value="#{meeting.meetingId}" />
+			</p:column>
+			<p:column>
+				<p:button outcome="JOIN-MEETING" value="Join meeting"
+					style="float:right;">
+					<f:param name="id"
+						value="#{createMeetingController.createdMeeting.meetingId}" />
+				</p:button>
+			</p:column>
+		</p:dataTable>
+	</ui:define>
+</ui:composition>
+
+</html>

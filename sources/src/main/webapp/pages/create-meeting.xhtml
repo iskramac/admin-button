@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/default/main.xhtml">
+	<ui:define name="content">
+		<h1 class="page-header ">
+			<i class="fa fa-plus"></i> Create meeting
+		</h1>
+		<h:form id="create-meeting-form">
+			<p:growl id="growl" showDetail="false" sticky="true" />
+
+			<p:panelGrid cellpadding="5">
+				<p:row>
+					<p:column>
+						<p:outputLabel value="Meeting name" for="meeting-name" />
+					</p:column>
+					<p:column>
+						<p:inputText id="meeting-name" value="#{createMeetingController.meeting.name}" required="true" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<p:outputLabel value="Attendee password" for="attendee-password" />
+					</p:column>
+					<p:column>
+						<p:password id="attendee-password" feedback="true" value="#{createMeetingController.meeting.attendeePw}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<p:outputLabel value="Moderator password" for="moderator-password" />
+					</p:column>
+					<p:column>
+						<p:password id="moderator-password" feedback="true" value="#{createMeetingController.meeting.moderatorPw}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<p:outputLabel value="Duration" for="duration" />
+					</p:column>
+					<p:column>
+						<h:outputText id="output" value="Set duration to #{createMeetingController.meeting.duration} minutes" />
+						<h:inputHidden id="duration" value="#{createMeetingController.meeting.duration}" />
+						<p:slider for="duration" display="output" maxValue="360" displayTemplate="Set duration to {value} minutes" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column>
+						<p:outputLabel value="Welcome message" for="welcome-message" />
+					</p:column>
+					<p:column>
+						<p:inputTextarea id="welcome-message" feedback="true" value="#{createMeetingController.meeting.welcome}" />
+					</p:column>
+				</p:row>
+				<p:row>
+					<p:column colspan="2">
+						<p:commandButton value="Submit" action="#{createMeetingController.createMeeting}" style="float:right;" update="@form" />
+						<p:commandButton value="Reset" action="#{createMeetingController.resetMeeting}" immediate="true"
+							resetValues="true" update="create-meeting-form" style="float:right;" />
+					</p:column>
+				</p:row>
+			</p:panelGrid>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

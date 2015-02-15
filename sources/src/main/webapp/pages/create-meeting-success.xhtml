@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/default/main.xhtml">
+	<ui:define name="content">
+		<h1 class="page-header ">
+			<i class="fa fa-tachometer"></i> Create meeting
+		</h1>
+		<h3>
+			Meeting <strong>#{createMeetingController.createdMeeting.name}</strong> has
+			been created
+		</h3>
+		<p>To join a meeting you have to write down following data:</p>
+		<p:panelGrid>
+			<p:row>
+				<p:column>Meeting ID:</p:column>
+				<p:column>
+					<strong>#{createMeetingController.createdMeeting.meetingId}</strong>
+				</p:column>
+			</p:row>
+			<p:row
+				rendered="#{not empty createMeetingController.createdMeeting.attendeePw}">
+				<p:column>Attendee password:</p:column>
+				<p:column>
+					<strong>#{createMeetingController.createdMeeting.attendeePw}</strong>
+				</p:column>
+			</p:row>
+			<p:row
+				rendered="#{not empty createMeetingController.createdMeeting.moderatorPw}">
+				<p:column>Moderator password:</p:column>
+				<p:column>
+					<strong>#{createMeetingController.createdMeeting.moderatorPw}</strong>
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>Duration:</p:column>
+				<p:column>
+					<strong>#{createMeetingController.createdMeeting.duration}
+						minutes</strong>
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column>Join URL:</p:column>
+				<p:column>
+					<p:link outcome="JOIN-MEETING" value="here">
+						<f:param name="id"
+							value="#{createMeetingController.createdMeeting.meetingId}" />
+					</p:link>
+				</p:column>
+			</p:row>
+			<p:row>
+				<p:column colspan="2">
+					<p:button outcome="CREATE-ROOM" value="Create another meeting" style="float:right;" />
+					<p:button outcome="JOIN-MEETING" value="Join meeting" style="float:right;">
+						<f:param name="id"
+							value="#{createMeetingController.createdMeeting.meetingId}" />
+					</p:button>
+				</p:column>
+			</p:row>
+		</p:panelGrid>
+	</ui:define>
+</ui:composition>
+</html>

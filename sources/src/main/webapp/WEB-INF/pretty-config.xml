@@ -1,0 +1,36 @@
+<pretty-config xmlns="http://ocpsoft.org/schema/rewrite-config-prettyfaces" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://ocpsoft.org/schema/rewrite-config-prettyfaces
+                      http://ocpsoft.org/xml/ns/prettyfaces/rewrite-config-prettyfaces.xsd">
+
+	<url-mapping id="login">
+		<pattern value="/login" />
+		<view-id value="/pages/login.xhtml" />
+	</url-mapping>
+	
+	<url-mapping id="dashboard">
+		<pattern value="/dashboard" />
+		<view-id value="/pages/dashboard.xhtml" />
+	</url-mapping>
+	<url-mapping id="create-meeting">
+		<pattern value="/create-meeting" />
+		<view-id value="/pages/create-meeting.xhtml" />
+	</url-mapping>
+	<url-mapping id="create-meeting-success">
+		<pattern value="/create-meeting/success" />
+		<view-id value="/pages/create-meeting-success.xhtml" />
+	</url-mapping>
+	<url-mapping id="join-meeting">
+		<pattern value="/join-meeting/#{id}" />
+		<view-id value="/pages/join-meeting.xhtml" />
+	</url-mapping>
+
+
+
+	<url-mapping id="available-meetings">
+		<pattern value="/available-meetings" />
+		<view-id value="/pages/available-meetings.xhtml" />
+	</url-mapping>
+
+
+
+</pretty-config>

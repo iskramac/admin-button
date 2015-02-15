@@ -1,0 +1,14 @@
+@CHARSET "UTF-8";
+
+table.ui-panelgrid tr.ui-widget-content{
+	border-style:none;
+}
+table.ui-panelgrid td.ui-panelgrid-cell{
+	border-style:none;
+}
+
+table.ui-panelgrid td.ui-panelgrid-cell input,
+table.ui-panelgrid td.ui-panelgrid-cell ui-slider,
+table.ui-panelgrid td.ui-panelgrid-cell textarea{
+	width:400px;
+}

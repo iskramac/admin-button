@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/default/main.xhtml">
+	<ui:define name="content">
+		<h1 class="page-header ">
+			<i class="fa fa-tachometer"></i> Dashboard
+		</h1>
+		<p:inputText label="Sample"></p:inputText>
+		<p:dataTable var="user" value="#{userController.users}">
+			<p:column headerText="Users">
+				<h:outputText value="#{user.userId}" /> - <h:outputText
+					value="#{user.userName}" />
+			</p:column>
+		</p:dataTable>
+	</ui:define>
+</ui:composition>
+
+</html>
